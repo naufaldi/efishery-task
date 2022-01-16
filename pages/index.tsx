@@ -9,7 +9,7 @@ const IndexPage = () => (
         <a>About</a>
       </Link>
     </p>
-  </Layout>
+  </Layout>    
 )
 
 export default IndexPage
