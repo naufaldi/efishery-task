@@ -1,0 +1,14 @@
+.hero {
+  @include pt(100px);
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.data {
+  @include pt(10px);
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

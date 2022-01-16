@@ -1,0 +1,9 @@
+.breadcumb {
+  display: flex;
+  align-items: center;
+  &__one {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+}

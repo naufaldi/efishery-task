@@ -1,0 +1,28 @@
+.navbar {
+  top: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+  &__content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

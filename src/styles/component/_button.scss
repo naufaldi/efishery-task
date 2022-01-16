@@ -1,0 +1,20 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  @include transition;
+  &--primary {
+    background-color: $primary;
+    color: #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid $primary;
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+  &--base {
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+}
