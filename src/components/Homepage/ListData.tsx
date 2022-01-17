@@ -14,6 +14,8 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const ListData: FC = () => {
   const [isError, setError] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
+
   const columns = React.useMemo(
     () => [
       {
@@ -91,11 +93,20 @@ const ListData: FC = () => {
   };
   const tableInstance = useRef(null);
   console.log('data swr', data);
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push('/addData');
+  };
   return (
     <Section id="table-homepage" className="data">
       <Container>
         <div className="data__button">
-          <Button ariaLabel="tambah data button">Tambah Data</Button>
+          <Button
+            ariaLabel="tambah data button"
+            onClick={(e) => handleClick(e)}
+          >
+            Tambah Data
+          </Button>
         </div>
         <h1>{data?.name}</h1>
         <div className="filter">

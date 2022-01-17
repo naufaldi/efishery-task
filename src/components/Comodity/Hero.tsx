@@ -9,7 +9,21 @@ const Hero: FC = () => {
       <Container className="hero__container">
         <Breadcumb>
           <p className="breadcumb__one">Beranda</p>
-          <p> {'>>'} </p>
+          <span className="arrow">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 5l7 7-7 7M5 5l7 7-7 7"
+              />
+            </svg>
+          </span>
           <p className="breadcumb__two">Tambah Data</p>
         </Breadcumb>
       </Container>

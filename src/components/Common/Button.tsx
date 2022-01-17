@@ -1,14 +1,9 @@
 import clsx from 'clsx';
 import React, { FC } from 'react';
-enum ButtonVariant {
-  'primary',
-  'light',
-}
 
-enum ButtonSize {
-  'small',
-  'base',
-}
+type ButtonVariant = 'primary' | 'light';
+
+type ButtonSize = 'small' | 'base' | 'large';
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -16,6 +11,7 @@ type ButtonProps = {
   className?: string;
   size?: ButtonSize;
   ariaLabel?: string;
+  onClick?: (e) => void;
 };
 
 const Button: FC<ButtonProps> = ({
@@ -23,6 +19,7 @@ const Button: FC<ButtonProps> = ({
   variant = 'primary',
   size = 'base',
   ariaLabel,
+  onClick,
 }) => {
   return (
     <button
@@ -35,6 +32,7 @@ const Button: FC<ButtonProps> = ({
         size === 'small' && 'button--small'
       )}
       aria-label={ariaLabel}
+      onClick={onClick}
     >
       {children}
     </button>
