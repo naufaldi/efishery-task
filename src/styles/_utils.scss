@@ -1,6 +1,9 @@
 @mixin pt($value) {
   padding-top: $value;
 }
+@mixin mt($value) {
+  margin-top: $value;
+}
 @mixin transition {
   transition: all 0.2s ease-in-out;
 }
