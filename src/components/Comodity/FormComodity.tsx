@@ -6,6 +6,7 @@ import Grid from '../Common/Grid';
 import Section from '../Common/Section';
 import { v4 as uuidv4 } from 'uuid';
 import useSWR from 'swr';
+import Link from 'next/link';
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const FormComodity = () => {
@@ -207,7 +208,7 @@ const FormComodity = () => {
                     <option value="" disabled selected={true}>
                       Pilih Size
                     </option>
-                    {dataSize.map((item, index) => (
+                    {dataSize?.map((item, index) => (
                       <option key={index} value={item.size}>
                         {item.size}
                       </option>
@@ -231,13 +232,11 @@ const FormComodity = () => {
             </form>
           </Card>
           <div className="comodity__button">
-            <Button
-              ariaLabel="batalkan data button"
-              variant="light"
-              // onClick={(e) => handleClick(e)}
-            >
-              Batalkan
-            </Button>
+            <Link passHref href="/">
+              <Button ariaLabel="batalkan data button" variant="light">
+                Batalkan
+              </Button>
+            </Link>
             <Button ariaLabel="tambah data button" onClick={submitForm}>
               Tambah Data
             </Button>

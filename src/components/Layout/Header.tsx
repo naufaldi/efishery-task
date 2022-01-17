@@ -13,11 +13,7 @@ const Header: FC = () => {
           <Link href="/">
             <a>Home</a>
           </Link>{' '}
-          |{' '}
-          <Link href="/about">
-            <a>About</a>
-          </Link>{' '}
-          |{' '}
+          | |{' '}
           <Link href="https://docs.steinhq.com/read-data">
             <a target="_blank">Data API</a>
           </Link>{' '}
