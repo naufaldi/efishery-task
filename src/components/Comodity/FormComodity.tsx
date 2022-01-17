@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Common/Button';
 import Card from '../Common/Card';
 import Container from '../Common/Container';
 import Grid from '../Common/Grid';
 import Section from '../Common/Section';
 import { v4 as uuidv4 } from 'uuid';
+import useSWR from 'swr';
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 const FormComodity = () => {
-  const [data, setData] = useState<any>([]);
+  const [dataForm, setDataForm] = useState<any>([]);
   const [province, setProvince] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [comodity, setComodity] = useState<string>('');
   const [size, setSize] = useState<string>('');
   const [price, setPrice] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const [isAlert, setAlert] = useState<boolean>(true);
+  const [errorState, setErrorState] = useState<boolean>(false);
+  const [isAlert, setAlert] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const { data, error } = useSWR(
+    'https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/option_area',
+    fetcher
+  );
+  const { data: dataSize, error: errorSize } = useSWR(
+    'https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/option_size',
+    fetcher
+  );
   const submitForm = () => {
     let now = new Date();
     let isoString = now.toISOString();
@@ -40,14 +53,40 @@ const FormComodity = () => {
     )
       .then((res) => res.json())
       .then((result) => {
-        setData(result);
+        setDataForm(result);
         setAlert(true);
       })
       .catch((err) => {
         alert('error');
       });
   };
-  console.log('data', data);
+  useEffect(() => {
+    if (error || errorSize) {
+      setErrorState(!errorState);
+    }
+    if (!data || !dataSize) {
+      setLoading(true);
+    }
+    if (data || dataSize) {
+      setLoading(false);
+    }
+  }, [data]);
+  const handleChangeProvince = (e) => {
+    // const value = event.target.value;
+    const value = e.target.value;
+    setProvince(value);
+  };
+  const handleChangeCity = (e) => {
+    // const value = event.target.value;
+    const value = e.target.value;
+    setCity(value);
+  };
+  const handleChangeSize = (e) => {
+    // const value = event.target.value;
+    const value = e.target.value;
+    setSize(value);
+  };
+  console.log('dataSize', dataSize);
   return (
     <Section id="form-data" className="comodity">
       <Container className="comodity__container">
@@ -55,7 +94,7 @@ const FormComodity = () => {
           <Card>
             {isAlert && (
               <div className="comodity__alert">
-                {data?.updatedRange && 'Data Berhasil diperbarui'}
+                {dataForm?.updatedRange && 'Data Berhasil diperbarui'}
 
                 <span onClick={() => setAlert(!isAlert)}>
                   <svg
@@ -82,14 +121,29 @@ const FormComodity = () => {
                   <label htmlFor="province" className="comodity__label">
                     Provinsi
                   </label>
-                  <input
+                  {/* <input
                     type="text"
                     name="province"
                     id="province"
                     className="input"
                     value={province}
                     onChange={(e) => setProvince(e.target.value)}
-                  />
+                  /> */}
+                  <select
+                    name="province"
+                    id="province"
+                    className="input"
+                    onChange={handleChangeProvince}
+                  >
+                    <option value="" disabled selected={true}>
+                      Pilih Provinsi
+                    </option>
+                    {data?.map((item: any, index: number) => (
+                      <option key={index} value={item.province}>
+                        {item.province}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="">
                   <label htmlFor="city" className="comodity__label">
@@ -103,6 +157,20 @@ const FormComodity = () => {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
+                  {/* <select
+                    name="city"
+                    id="city"
+                    className="input"
+                    onChange={handleChangeCity}
+                  >
+                    {data?.map((item: any, index: number) => {
+                      if (item.province === province) {
+                        <option key={index} value={item.city}>
+                          {item.city}
+                        </option>;
+                      }
+                    })}
+                  </select> */}
                 </div>
                 <h6>Barang</h6>
                 <div className="">
@@ -122,14 +190,29 @@ const FormComodity = () => {
                   <label htmlFor="size" className="comodity__label">
                     Size
                   </label>
-                  <input
+                  {/* <input
                     type="text"
                     name="size"
                     id="size"
                     className="input"
                     value={size}
                     onChange={(e) => setSize(e.target.value)}
-                  />
+                  /> */}
+                  <select
+                    name="province"
+                    id="province"
+                    className="input"
+                    onChange={handleChangeSize}
+                  >
+                    <option value="" disabled selected={true}>
+                      Pilih Size
+                    </option>
+                    {dataSize.map((item, index) => (
+                      <option key={index} value={item.size}>
+                        {item.size}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="">
                   <label htmlFor="price" className="comodity__label">
