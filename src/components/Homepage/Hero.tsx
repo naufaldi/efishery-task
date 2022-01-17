@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { FC } from 'react';
 import Breadcumb from '../Common/Breadcumb';
 // import useSWR from 'swr';
@@ -18,7 +19,9 @@ const Hero: FC = () => {
     <Section id="hero-homepage" className="hero">
       <Container className="hero__container">
         <Breadcumb>
-          <p className="breadcumb__one">Beranda</p>
+          <Link href="/">
+            <a className="breadcumb__one">Beranda</a>
+          </Link>
         </Breadcumb>
         {/* <h1>{data?.name}</h1> */}
       </Container>

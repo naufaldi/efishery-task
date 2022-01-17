@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { FC } from 'react';
 import Breadcumb from '../Common/Breadcumb';
 import Container from '../Common/Container';
@@ -8,7 +9,9 @@ const Hero: FC = () => {
     <Section id="hero-add-data" className="hero">
       <Container className="hero__container">
         <Breadcumb>
-          <p className="breadcumb__one">Beranda</p>
+          <Link href="/">
+            <a className="breadcumb__one">Beranda</a>
+          </Link>
           <span className="arrow">
             <svg
               fill="none"

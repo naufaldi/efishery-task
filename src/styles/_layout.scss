@@ -35,3 +35,25 @@
 .grid {
   display: grid;
 }
+
+main {
+  padding-bottom: 40px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  div {
+    display: flex;
+    max-width: 1280px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  p {
+    margin-right: 12px;
+  }
+}

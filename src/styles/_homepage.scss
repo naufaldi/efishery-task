@@ -112,6 +112,16 @@ table {
   @include mb(10px);
   gap: 10px;
   display: flex;
+  align-items: center;
+  width: 800px;
+  @include breakpoint(desktop) {
+    width: auto;
+  }
+  span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
   button {
     border: 1px solid $primary;
     padding: 2px 8px;
@@ -148,8 +158,10 @@ table {
     font-size: 14px;
     width: 100%;
     max-width: 150px;
+    margin-left: 4px;
     &::placeholder {
       font-size: 14px;
     }
+    @include mb(0px);
   }
 }

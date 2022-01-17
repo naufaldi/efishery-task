@@ -10,3 +10,15 @@
 @mixin transition {
   transition: all 0.2s ease-in-out;
 }
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $point == mobile {
+    @media (min-width: 640px) {
+      @content;
+    }
+  }
+}

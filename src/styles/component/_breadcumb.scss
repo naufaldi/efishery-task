@@ -19,4 +19,12 @@
     width: 14px;
     height: 14px;
   }
+  a {
+    @include transition;
+    text-decoration: none;
+    &:hover {
+      color: $gray-dark;
+      text-decoration: underline;
+    }
+  }
 }
