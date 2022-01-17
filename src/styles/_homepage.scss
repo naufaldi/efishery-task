@@ -41,4 +41,115 @@ table {
       border-right: 0;
     }
   }
+  .thead {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+  }
+  .size {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .price {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .date {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+.table {
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+.tbody {
+  text-transform: capitalize;
+}
+
+.filter {
+  @include mt(10px);
+  @include mb(10px);
+  &__label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    @include mb(4px);
+  }
+  &__input {
+    border: 1px solid $gray;
+    padding: 8px 16px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    &:focus {
+      border-color: $primary-dark;
+      outline: 1px solid $primary-dark;
+    }
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+}
+
+.pagination {
+  @include mt(10px);
+  @include mb(10px);
+  gap: 10px;
+  display: flex;
+  button {
+    border: 1px solid $primary;
+    padding: 2px 8px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    background: $primary;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include transition;
+    &:hover {
+      border-color: 1px solid $primary-dark;
+      background: $primary-dark;
+    }
+    &::placeholder {
+      font-size: 14px;
+    }
+    &:disabled {
+      background: $gray;
+      color: $gray-dark;
+      cursor: not-allowed;
+      color: white;
+    }
+  }
+  .input {
+    border: 1px solid $primary;
+    padding: 4px 12px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    max-width: 150px;
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
 }

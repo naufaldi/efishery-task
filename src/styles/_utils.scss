@@ -4,6 +4,9 @@
 @mixin mt($value) {
   margin-top: $value;
 }
+@mixin mb($value) {
+  margin-bottom: $value;
+}
 @mixin transition {
   transition: all 0.2s ease-in-out;
 }
